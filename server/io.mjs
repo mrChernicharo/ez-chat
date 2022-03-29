@@ -22,15 +22,17 @@ io.on('connection', socket => {
 		serverMessage: socket.id + ' has connected',
 	});
 
-	socket.on('sendMessage', data => {
-		console.log(socket.id, ' sent message ', data);
+	socket.on('sendMessage', (message, room) => {
+		console.log(socket.id, ' sent message ', message);
 
-		// socket.broadcast.emit('SERVER_BROADCAST_MESSAGE', data); // send to all but me
-		io.emit('messageReceived', {
-			id: socket.id,
-			text: data,
-			timestamp: getTimestamp(),
-		}); // send to all
+		if (room) {
+			console.log('room: ', room);
+			socket.to(room).emit('messageReceived', message);
+		} else {
+			console.log('everyone');
+			socket.broadcast.emit('messageReceived', message);
+			// io.emit('messageReceived', message);
+		}
 	});
 
 	socket.on('disconnect', () => {
