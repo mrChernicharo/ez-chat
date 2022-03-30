@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ez-Chat</title>
-	</head>
-	<body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Ez-Chat</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<main>
 		<h1>Ez-Chat</h1>
 
 		<!-- [contacts & groups] -->
-		<!-- <label>Rooms</label> -->
+		<label>Rooms</label>
 		<ul id="rooms-list"></ul>
 
-		<!-- <label>Messages</label> -->
-		<ul id="messages-list"></ul>
-
-		<form id="send-message-form">
-			<label for="send-message-input">Message</label>
-			<input type="text" id="send-message-input" />
-			<input type="submit" value="Send" />
-		</form>
 		<br />
 		<form id="room-form">
 			<label for="room-input">Room</label>
 			<input type="text" id="room-input" />
 			<input type="submit" value="Join" />
 		</form>
+	</main>
 
-		<!-- prettier-ignore -->
-		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
-		<script type="module" src="./app.mjs"></script>
-	</body>
+
+	<div id="chat-room" class="closed">
+		<button id="chat-close-btn">x</button>
+		<h1 id="chat-room-title"></h1>
+
+		<label>Messages</label>
+		<ul id="messages-list"></ul>
+
+		<form id="send-message-form">
+			<input type="text" id="send-message-input" placeholder="type here..." />
+			<input type="submit" value="Send" />
+		</form>
+	</div>
+
+
+	<!--  -->
+	<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+		integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+		crossorigin="anonymous"></script>
+	<script type="module" src="./app.mjs"></script>
+</body>
+
 </html>

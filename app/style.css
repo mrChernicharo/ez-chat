@@ -1,0 +1,10 @@
+#chat-room {
+  border: 1px solid;
+  background: #ddd;
+  position: absolute;
+  top: 0;
+}
+
+#chat-room.closed {
+  display: none;
+}
